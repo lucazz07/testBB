@@ -1,0 +1,2011 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Breda & Bittencourt Advogados — Direito Bancário</title>
+<meta name="description" content="Especialistas em Direito Bancário. Defendemos pessoas físicas e empresas contra práticas abusivas, execuções e fraudes bancárias em todo o Brasil." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+/* === CSS CUSTOM PROPERTIES === */
+:root {
+  --navy:        #0B1F3A;
+  --navy-mid:    #112240;
+  --navy-deep:   #070F1E;
+  --gold:        #C9A84C;
+  --gold-light:  #E2C47A;
+  --gold-dark:   #A8872E;
+  --cream:       #F4F1EC;
+  --white:       #FFFFFF;
+  --text-dark:   #1A1A2E;
+  --text-muted:  #6B7280;
+  --text-light:  #A8B2C1;
+  --border:      rgba(201,168,76,0.2);
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans:  'Inter', system-ui, sans-serif;
+
+  --nav-h: 72px;
+  --section-pad: clamp(64px, 8vw, 112px);
+  --container: 1200px;
+  --radius: 8px;
+
+  --ease-out-expo: cubic-bezier(0.16,1,0.3,1);
+  --ease-gold: cubic-bezier(0.4,0,0.2,1);
+}
+
+/* === RESET & BASE === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+ul { list-style: none; }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 48px);
+}
+
+/* === UTILITY === */
+.sr-only { position: absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo); }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* === BUTTONS === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.25s var(--ease-gold);
+  white-space: nowrap;
+}
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy-deep);
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.35); }
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1.5px solid var(--gold);
+}
+.btn-outline:hover { background: rgba(201,168,76,0.08); transform: translateY(-2px); }
+.btn-lg { padding: 18px 36px; font-size: 16px; }
+
+/* ============================================================
+   SECTION 1 — NAVBAR
+   ============================================================ */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: var(--nav-h);
+  transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+}
+#navbar.scrolled {
+  background: rgba(7,15,30,0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(201,168,76,0.15), 0 8px 32px rgba(0,0,0,0.4);
+}
+.nav-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--white);
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  flex-shrink: 0;
+}
+.nav-logo svg { flex-shrink: 0; }
+.nav-logo span { color: var(--gold); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.nav-links a {
+  color: rgba(255,255,255,0.78);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: var(--gold); background: rgba(201,168,76,0.08); }
+.nav-cta { flex-shrink: 0; }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.nav-hamburger:hover { background: rgba(255,255,255,0.08); }
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile nav drawer */
+#nav-drawer {
+  display: none;
+  position: fixed;
+  top: var(--nav-h);
+  left: 0; right: 0;
+  background: rgba(7,15,30,0.97);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  padding: 24px;
+  z-index: 999;
+  transform: translateY(-8px);
+  opacity: 0;
+  transition: transform 0.3s var(--ease-out-expo), opacity 0.3s ease;
+}
+#nav-drawer.open {
+  transform: translateY(0);
+  opacity: 1;
+}
+#nav-drawer a {
+  display: block;
+  color: rgba(255,255,255,0.85);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: color 0.2s;
+}
+#nav-drawer a:hover { color: var(--gold); }
+#nav-drawer .btn { margin-top: 20px; width: 100%; justify-content: center; }
+
+/* ============================================================
+   SECTION 2 — HERO
+   ============================================================ */
+#hero {
+  min-height: 100svh;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-top: var(--nav-h);
+}
+
+/* Geometric noise texture overlay */
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 65% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 10% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Subtle dot grid */
+#hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(201,168,76,0.12) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse 70% 70% at 70% 50%, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 70% 50%, black 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 48px;
+  padding: clamp(48px,8vw,96px) 0;
+}
+.hero-content { max-width: 600px; }
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+}
+.hero-h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(38px, 5.5vw, 68px);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+.hero-h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-sub {
+  font-size: clamp(15px,1.5vw,17px);
+  line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 36px;
+  max-width: 480px;
+}
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.6);
+  font-size: 13px;
+  font-weight: 500;
+}
+.trust-item svg { color: var(--gold); flex-shrink: 0; }
+
+/* Hero right — Themis illustration */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.hero-themis {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+}
+.themis-glow {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%);
+  top: 20%;
+  left: 20%;
+  border-radius: 50%;
+  filter: blur(30px);
+}
+.themis-svg-wrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+
+/* ============================================================
+   SECTION 3 — URGENCY STRIP
+   ============================================================ */
+#urgency {
+  background: var(--navy-mid);
+  border-top: 1px solid rgba(201,168,76,0.15);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  padding: 48px 0;
+}
+.urgency-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+.urgency-card {
+  background: rgba(255,255,255,0.02);
+  border-left: 3px solid transparent;
+  padding: 28px 24px;
+  transition: border-color 0.3s, background 0.3s, transform 0.3s;
+  cursor: default;
+}
+.urgency-card:hover {
+  border-left-color: var(--gold);
+  background: rgba(201,168,76,0.05);
+  transform: translateY(-3px);
+}
+.urgency-emoji {
+  font-size: 28px;
+  margin-bottom: 12px;
+  display: block;
+}
+.urgency-card h3 {
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.urgency-link {
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s;
+}
+.urgency-card:hover .urgency-link { gap: 8px; }
+
+/* ============================================================
+   SECTION 4 — SOLUÇÕES
+   ============================================================ */
+#solucoes {
+  padding: var(--section-pad) 0;
+  background: var(--cream);
+}
+.section-eyebrow {
+  color: var(--gold-dark);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.section-sub {
+  color: var(--text-muted);
+  font-size: 16px;
+  max-width: 520px;
+}
+.section-header { margin-bottom: 48px; }
+
+.tab-toggle {
+  display: inline-flex;
+  background: rgba(11,31,58,0.08);
+  border-radius: 50px;
+  padding: 4px;
+  gap: 4px;
+  margin-bottom: 40px;
+}
+.tab-btn {
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: all 0.3s var(--ease-gold);
+}
+.tab-btn.active {
+  background: var(--navy);
+  color: var(--gold);
+  box-shadow: 0 2px 12px rgba(11,31,58,0.2);
+}
+.tab-content { display: none; }
+.tab-content.active { display: block; animation: fadeIn 0.35s ease; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.service-card {
+  background: var(--white);
+  border: 1px solid rgba(11,31,58,0.08);
+  border-radius: 12px;
+  padding: 28px;
+  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease, border-color 0.3s;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(11,31,58,0.12);
+  border-color: rgba(201,168,76,0.35);
+}
+.service-icon {
+  font-size: 28px;
+  margin-bottom: 14px;
+  display: block;
+}
+.service-card h3 {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.service-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   SECTION 5 — PROCESSO
+   ============================================================ */
+#processo {
+  padding: var(--section-pad) 0;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+#processo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+#processo .section-title { color: var(--white); }
+#processo .section-sub { color: rgba(255,255,255,0.55); }
+#processo .section-eyebrow { color: var(--gold); }
+
+.process-timeline {
+  position: relative;
+  display: flex;
+  gap: 0;
+  margin-top: 56px;
+}
+.process-timeline::before {
+  content: '';
+  position: absolute;
+  top: 36px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), var(--gold), var(--border), transparent);
+}
+.process-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 12px;
+  position: relative;
+}
+.step-bubble {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--navy);
+  position: relative;
+  z-index: 1;
+  transition: background 0.3s, box-shadow 0.3s;
+  margin-bottom: 20px;
+}
+.process-step:hover .step-bubble {
+  background: rgba(201,168,76,0.1);
+  box-shadow: 0 0 24px rgba(201,168,76,0.3);
+}
+.step-num {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+.step-icon { font-size: 20px; }
+.process-step h3 {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.process-step p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   SECTION 6 — SOBRE
+   ============================================================ */
+#sobre {
+  padding: var(--section-pad) 0;
+  background: var(--white);
+}
+.sobre-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.sobre-features {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--text-dark);
+}
+.feature-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.feature-check svg { color: var(--gold); }
+.sobre-cta { margin-top: 36px; }
+
+.sobre-visual {
+  position: relative;
+}
+.photo-placeholder {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  border-radius: 12px;
+  aspect-ratio: 4/5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border-left: 4px solid var(--gold);
+  position: relative;
+  overflow: hidden;
+}
+.photo-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 30%, rgba(201,168,76,0.08) 0%, transparent 70%);
+}
+.photo-placeholder p {
+  color: rgba(255,255,255,0.4);
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 1;
+}
+.sobre-accent-box {
+  position: absolute;
+  bottom: -24px;
+  right: -24px;
+  background: var(--gold);
+  border-radius: 8px;
+  padding: 20px 24px;
+  box-shadow: 0 12px 40px rgba(201,168,76,0.3);
+}
+.accent-num {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--navy-deep);
+  line-height: 1;
+}
+.accent-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(11,31,58,0.7);
+  margin-top: 4px;
+}
+
+/* ============================================================
+   SECTION 7 — NÚMEROS / COUNTERS
+   ============================================================ */
+#numeros {
+  padding: clamp(56px,7vw,88px) 0;
+  background: var(--navy);
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+.stat-item {
+  text-align: center;
+  padding: 40px 24px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--font-serif);
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+}
+
+/* ============================================================
+   SECTION 8 — DEPOIMENTOS
+   ============================================================ */
+#depoimentos {
+  padding: var(--section-pad) 0;
+  background: var(--cream);
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.testimonial-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 32px;
+  border: 1px solid rgba(11,31,58,0.07);
+  position: relative;
+  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
+}
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 56px rgba(11,31,58,0.1);
+}
+.testimonial-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  font-family: var(--font-serif);
+  font-size: 72px;
+  color: var(--gold);
+  opacity: 0.25;
+  line-height: 1;
+}
+.stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 16px;
+}
+.star { color: var(--gold); font-size: 15px; }
+.testimonial-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+  font-style: italic;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.author-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.author-role {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   SECTION 9 — FAQ
+   ============================================================ */
+#faq {
+  padding: var(--section-pad) 0;
+  background: var(--white);
+}
+.faq-inner {
+  max-width: 740px;
+  margin: 0 auto;
+}
+.faq-list {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.faq-item {
+  border-bottom: 1px solid rgba(11,31,58,0.1);
+}
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 0;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy);
+  transition: color 0.2s;
+}
+.faq-question:hover { color: var(--gold-dark); }
+.faq-arrow {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(201,168,76,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.35s var(--ease-out-expo), background 0.25s, border-color 0.25s;
+  color: var(--gold);
+}
+.faq-item.open .faq-arrow {
+  transform: rotate(180deg);
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy-deep);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s var(--ease-out-expo), padding 0.3s ease;
+}
+.faq-item.open .faq-answer { max-height: 300px; }
+.faq-answer-inner {
+  padding: 0 0 22px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   SECTION 10 — CTA BANNER
+   ============================================================ */
+#cta-banner {
+  padding: clamp(64px,8vw,96px) 0;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+#cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 100% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 65%),
+    linear-gradient(to bottom, transparent, rgba(201,168,76,0.03));
+  pointer-events: none;
+}
+/* Gold border top/bottom */
+#cta-banner::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
+}
+.cta-banner-inner { position: relative; z-index: 2; }
+.cta-banner-inner h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 16px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-banner-inner p {
+  color: rgba(255,255,255,0.6);
+  font-size: 17px;
+  margin-bottom: 40px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn-wa {
+  background: #25D366;
+  color: var(--white);
+  font-size: 17px;
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  gap: 10px;
+  box-shadow: 0 8px 32px rgba(37,211,102,0.3);
+  transition: all 0.25s var(--ease-gold);
+}
+.btn-wa:hover {
+  background: #1fb555;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(37,211,102,0.4);
+}
+
+/* ============================================================
+   SECTION 11 — FOOTER
+   ============================================================ */
+#footer {
+  background: var(--navy-deep);
+  padding: 72px 0 0;
+  border-top: 1px solid rgba(201,168,76,0.15);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 48px;
+  padding-bottom: 56px;
+}
+.footer-brand { max-width: 280px; }
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--white);
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.footer-logo span { color: var(--gold); }
+.footer-tagline {
+  color: rgba(255,255,255,0.45);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+.social-links {
+  display: flex;
+  gap: 12px;
+}
+.social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid rgba(201,168,76,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.6);
+  transition: all 0.25s;
+}
+.social-link:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.08); }
+.footer-col h4 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li a {
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.footer-col ul li a:hover { color: var(--white); }
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--gold); }
+.contact-item a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+.contact-item a:hover { color: var(--gold); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+}
+.footer-copy {
+  color: rgba(255,255,255,0.3);
+  font-size: 13px;
+}
+.footer-disclaimer {
+  color: rgba(255,255,255,0.2);
+  font-size: 12px;
+  max-width: 640px;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   FLOATING WHATSAPP BUTTON
+   ============================================================ */
+#wa-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 990;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  cursor: pointer;
+}
+.wa-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(37,211,102,0.45);
+  transition: transform 0.25s var(--ease-gold), box-shadow 0.25s;
+  position: relative;
+  flex-shrink: 0;
+  animation: wa-pulse 2.5s ease-in-out infinite;
+}
+.wa-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 32px rgba(37,211,102,0.55);
+  animation: none;
+}
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 4px 24px rgba(37,211,102,0.45); }
+  50% { box-shadow: 0 4px 24px rgba(37,211,102,0.45), 0 0 0 10px rgba(37,211,102,0.08); }
+}
+.wa-tooltip {
+  background: var(--navy-deep);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  white-space: nowrap;
+  position: absolute;
+  right: 68px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+#wa-float:hover .wa-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .stat-item:last-child, .stat-item:nth-child(3) { border-bottom: none; }
+  .urgency-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .sobre-grid { grid-template-columns: 1fr; gap: 48px; }
+  .sobre-accent-box { display: none; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-grid { grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .process-timeline {
+    flex-direction: column;
+    gap: 0;
+    max-width: 480px;
+    margin: 40px auto 0;
+  }
+  .process-timeline::before { display: none; }
+  .process-step {
+    flex-direction: row;
+    text-align: left;
+    padding: 0 0 32px 0;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .step-bubble { margin-bottom: 0; flex-shrink: 0; }
+}
+
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+  #nav-drawer { display: block; }
+  .urgency-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-brand { max-width: 100%; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .hero-ctas { flex-direction: column; }
+  .hero-ctas .btn { width: 100%; justify-content: center; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SECTION 1 — NAVBAR
+     ============================================================ -->
+<nav id="navbar" role="navigation" aria-label="Navegação principal">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Breda &amp; Bittencourt Advogados — início">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+          <path d="M13 2L4 8v2h18V8L13 2Z" fill="#C9A84C" opacity="0.9"/>
+          <rect x="5.5" y="10" width="2" height="10" rx="1" fill="#C9A84C" opacity="0.7"/>
+          <rect x="11.5" y="10" width="2" height="10" rx="1" fill="#C9A84C" opacity="0.7"/>
+          <rect x="17.5" y="10" width="2" height="10" rx="1" fill="#C9A84C" opacity="0.7"/>
+          <rect x="3" y="20" width="20" height="2" rx="1" fill="#C9A84C"/>
+          <line x1="13" y1="1" x2="4" y2="8" stroke="#C9A84C" stroke-width="1.5" opacity="0.5"/>
+          <line x1="13" y1="1" x2="22" y2="8" stroke="#C9A84C" stroke-width="1.5" opacity="0.5"/>
+        </svg>
+        Breda &amp; <span>Bittencourt</span>
+      </a>
+
+      <div class="nav-links" role="list">
+        <a href="#hero" role="listitem">Início</a>
+        <a href="#solucoes" role="listitem">Soluções</a>
+        <a href="#sobre" role="listitem">Quem Somos</a>
+        <a href="#processo" role="listitem">Processo</a>
+        <a href="#depoimentos" role="listitem">Depoimentos</a>
+        <a href="#faq" role="listitem">FAQ</a>
+        <a href="#footer" role="listitem">Contato</a>
+      </div>
+
+      <div class="nav-cta">
+        <a href="https://wa.me/5521967617560" target="_blank" rel="noopener" class="btn btn-gold" aria-label="Consulta Gratuita via WhatsApp">
+          Consulta Gratuita
+        </a>
+      </div>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Drawer -->
+<div id="nav-drawer" role="dialog" aria-label="Menu de navegação" aria-hidden="true">
+  <a href="#hero" class="drawer-link">Início</a>
+  <a href="#solucoes" class="drawer-link">Soluções</a>
+  <a href="#sobre" class="drawer-link">Quem Somos</a>
+  <a href="#processo" class="drawer-link">Processo</a>
+  <a href="#depoimentos" class="drawer-link">Depoimentos</a>
+  <a href="#faq" class="drawer-link">FAQ</a>
+  <a href="#footer" class="drawer-link">Contato</a>
+  <a href="https://wa.me/5521967617560" target="_blank" rel="noopener" class="btn btn-gold">Consulta Gratuita</a>
+</div>
+
+
+<!-- ============================================================
+     SECTION 2 — HERO
+     ============================================================ -->
+<section id="hero" aria-label="Apresentação do escritório">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow" aria-hidden="true">Direito Bancário — Pessoa Física &amp; Jurídica</div>
+
+        <h1 class="hero-h1">
+          Seu banco agiu<br>com abuso.<br><em>Nós agimos<br>com a lei.</em>
+        </h1>
+
+        <p class="hero-sub">
+          Especialistas em Direito Bancário com atuação em todo o Brasil. Defendemos pessoas físicas e empresas contra práticas abusivas, execuções e fraudes bancárias.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="https://wa.me/5521967617560" target="_blank" rel="noopener" class="btn btn-gold btn-lg" aria-label="Falar com advogado via WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Falar com Advogado →
+          </a>
+          <a href="#solucoes" class="btn btn-outline btn-lg">Conhecer Nossas Soluções</a>
+        </div>
+
+        <div class="hero-trust" role="list" aria-label="Diferenciais">
+          <div class="trust-item" role="listitem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6l9 6 9-6M3 18l9-6 9 6"/></svg>
+            Atendimento Digital Nacional
+          </div>
+          <div class="trust-item" role="listitem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            Sigilo Garantido
+          </div>
+          <div class="trust-item" role="listitem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            Análise Gratuita do Caso
+          </div>
+        </div>
+      </div>
+
+      <!-- Themis SVG Illustration -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-themis">
+          <div class="themis-glow"></div>
+          <div class="themis-svg-wrap">
+            <svg width="380" height="480" viewBox="0 0 380 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Background ring -->
+              <circle cx="190" cy="240" r="180" stroke="rgba(201,168,76,0.06)" stroke-width="1"/>
+              <circle cx="190" cy="240" r="140" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
+
+              <!-- Main staff -->
+              <rect x="187" y="60" width="6" height="320" rx="3" fill="url(#staffGrad)"/>
+
+              <!-- Top ornament -->
+              <circle cx="190" cy="55" r="10" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.8"/>
+              <circle cx="190" cy="55" r="4" fill="#C9A84C" opacity="0.6"/>
+
+              <!-- Crossbar (balance beam) -->
+              <rect x="100" y="118" width="180" height="5" rx="2.5" fill="url(#beamGrad)"/>
+
+              <!-- Left pan chain -->
+              <line x1="120" y1="123" x2="110" y2="175" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
+              <line x1="110" y1="175" x2="90" y2="175" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
+              <line x1="90" y1="175" x2="80" y2="175" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
+
+              <!-- Left pan -->
+              <path d="M68 175 Q90 195 112 175" fill="none" stroke="#C9A84C" stroke-width="2"/>
+              <ellipse cx="90" cy="175" rx="22" ry="4" fill="rgba(201,168,76,0.15)" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
+
+              <!-- Right pan chain -->
+              <line x1="260" y1="123" x2="270" y2="160" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
+              <line x1="270" y1="160" x2="290" y2="160" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
+              <line x1="290" y1="160" x2="300" y2="160" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
+
+              <!-- Right pan (slightly lower — unbalanced) -->
+              <path d="M278 160 Q300 182 322 160" fill="none" stroke="#C9A84C" stroke-width="2"/>
+              <ellipse cx="300" cy="160" rx="22" ry="4" fill="rgba(201,168,76,0.15)" stroke="#C9A84C" stroke-width="1.5" opacity="0.7"/>
+
+              <!-- Pivot gem -->
+              <circle cx="190" cy="120" r="7" fill="#C9A84C" opacity="0.9"/>
+              <circle cx="190" cy="120" r="3" fill="white" opacity="0.4"/>
+
+              <!-- Figure torso (stylized) -->
+              <ellipse cx="190" cy="310" rx="38" ry="55" fill="rgba(201,168,76,0.06)" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+
+              <!-- Robe folds -->
+              <path d="M158 285 Q170 320 160 380" stroke="rgba(201,168,76,0.15)" stroke-width="1.5" fill="none"/>
+              <path d="M172 280 Q180 325 170 385" stroke="rgba(201,168,76,0.12)" stroke-width="1" fill="none"/>
+              <path d="M208 280 Q200 325 210 385" stroke="rgba(201,168,76,0.12)" stroke-width="1" fill="none"/>
+              <path d="M222 285 Q210 320 220 380" stroke="rgba(201,168,76,0.15)" stroke-width="1.5" fill="none"/>
+
+              <!-- Head -->
+              <ellipse cx="190" cy="248" rx="22" ry="26" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.25)" stroke-width="1.5"/>
+
+              <!-- Blindfold -->
+              <rect x="170" y="245" width="40" height="7" rx="3.5" fill="rgba(201,168,76,0.3)" stroke="#C9A84C" stroke-width="1" opacity="0.8"/>
+
+              <!-- Crown / Laurel -->
+              <path d="M170 238 Q175 228 180 238 Q183 230 188 238 Q191 228 196 238 Q199 230 205 238 Q210 228 215 238" stroke="#C9A84C" stroke-width="1.5" fill="none" opacity="0.7"/>
+
+              <!-- Arms -->
+              <path d="M165 275 Q148 268 135 265" stroke="rgba(201,168,76,0.3)" stroke-width="8" stroke-linecap="round" fill="none"/>
+              <path d="M215 275 Q228 268 245 268" stroke="rgba(201,168,76,0.3)" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+              <!-- Held hand (right, sword-side) -->
+              <line x1="245" y1="268" x2="245" y2="200" stroke="rgba(201,168,76,0.4)" stroke-width="3" stroke-linecap="round"/>
+
+              <!-- Sword -->
+              <line x1="245" y1="200" x2="245" y2="140" stroke="#C9A84C" stroke-width="2.5" opacity="0.7"/>
+              <path d="M238 200 L252 200" stroke="#C9A84C" stroke-width="2" opacity="0.7"/>
+              <polygon points="245,135 241,148 249,148" fill="#C9A84C" opacity="0.8"/>
+
+              <!-- Base / Pedestal -->
+              <rect x="155" y="380" width="70" height="8" rx="4" fill="rgba(201,168,76,0.2)"/>
+              <rect x="140" y="388" width="100" height="6" rx="3" fill="rgba(201,168,76,0.15)"/>
+              <rect x="128" y="394" width="124" height="4" rx="2" fill="rgba(201,168,76,0.1)"/>
+
+              <!-- Floating particles -->
+              <circle cx="80" cy="180" r="2" fill="#C9A84C" opacity="0.3"/>
+              <circle cx="310" cy="150" r="1.5" fill="#C9A84C" opacity="0.25"/>
+              <circle cx="60" cy="300" r="1.5" fill="#C9A84C" opacity="0.2"/>
+              <circle cx="330" cy="280" r="2" fill="#C9A84C" opacity="0.2"/>
+              <circle cx="150" cy="420" r="1.5" fill="#C9A84C" opacity="0.15"/>
+              <circle cx="240" cy="415" r="1" fill="#C9A84C" opacity="0.15"/>
+
+              <!-- Decorative arc -->
+              <path d="M40 240 A150 150 0 0 1 340 240" stroke="rgba(201,168,76,0.06)" stroke-width="1" fill="none" stroke-dasharray="4 8"/>
+
+              <defs>
+                <linearGradient id="staffGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#C9A84C" stop-opacity="0.3"/>
+                </linearGradient>
+                <linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.4"/>
+                  <stop offset="50%" stop-color="#C9A84C" stop-opacity="1"/>
+                  <stop offset="100%" stop-color="#C9A84C" stop-opacity="0.4"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 3 — URGENCY STRIP
+     ============================================================ -->
+<section id="urgency" aria-label="Situações de urgência">
+  <div class="container">
+    <div class="urgency-grid">
+
+      <div class="urgency-card reveal">
+        <span class="urgency-emoji" aria-hidden="true">🚗</span>
+        <h3>Recebeu busca e apreensão do veículo?</h3>
+        <span class="urgency-link" aria-hidden="true">→ Saiba seus direitos</span>
+      </div>
+
+      <div class="urgency-card reveal reveal-delay-1">
+        <span class="urgency-emoji" aria-hidden="true">💸</span>
+        <h3>Desconto abusivo no consignado?</h3>
+        <span class="urgency-link" aria-hidden="true">→ Saiba seus direitos</span>
+      </div>
+
+      <div class="urgency-card reveal reveal-delay-2">
+        <span class="urgency-emoji" aria-hidden="true">🏦</span>
+        <h3>Conta bloqueada ou penhora indevida?</h3>
+        <span class="urgency-link" aria-hidden="true">→ Saiba seus direitos</span>
+      </div>
+
+      <div class="urgency-card reveal reveal-delay-3">
+        <span class="urgency-emoji" aria-hidden="true">📱</span>
+        <h3>Vítima de golpe PIX ou fraude bancária?</h3>
+        <span class="urgency-link" aria-hidden="true">→ Saiba seus direitos</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 4 — SOLUÇÕES
+     ============================================================ -->
+<section id="solucoes" aria-label="Nossas soluções jurídicas">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Áreas de Atuação</p>
+      <h2 class="section-title">Nossas Soluções</h2>
+      <p class="section-sub">Atuamos nas principais frentes do Direito Bancário</p>
+    </div>
+
+    <div class="tab-toggle reveal" role="tablist" aria-label="Selecione o tipo de cliente">
+      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-pf" id="btn-pf" data-tab="pf">
+        Pessoa Física
+      </button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-pj" id="btn-pj" data-tab="pj">
+        Pessoa Jurídica
+      </button>
+    </div>
+
+    <!-- Pessoa Física -->
+    <div class="tab-content active" id="tab-pf" role="tabpanel" aria-labelledby="btn-pf">
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <span class="service-icon" aria-hidden="true">🚗</span>
+          <h3>Defesa em Busca e Apreensão de Veículo</h3>
+          <p>Atuamos com urgência para suspender ou reverter a apreensão do seu veículo, contestando cláusulas abusivas do contrato.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <span class="service-icon" aria-hidden="true">📄</span>
+          <h3>Revisional de Financiamento</h3>
+          <p>Revisão de contratos de financiamento de veículo ou imóvel com redução de juros e eliminação de cobranças indevidas.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <span class="service-icon" aria-hidden="true">💼</span>
+          <h3>Empréstimo Consignado Abusivo</h3>
+          <p>Identificamos e combatemos descontos ilegais em folha de pagamento, margens excedidas e contratos fraudulentos.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <span class="service-icon" aria-hidden="true">🏦</span>
+          <h3>Penhora e Bloqueio de Conta</h3>
+          <p>Desbloqueamos contas penhoradas indevidamente e protegemos sua renda mínima de impenhorabilidade legal.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <span class="service-icon" aria-hidden="true">🛡️</span>
+          <h3>Fraude e Golpe Bancário (PIX, Motoboy)</h3>
+          <p>Representamos vítimas de fraudes eletrônicas, golpe do PIX e motoboy, buscando ressarcimento junto às instituições.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <span class="service-icon" aria-hidden="true">📋</span>
+          <h3>Negativação Indevida e Nome Sujo</h3>
+          <p>Removemos registros irregulares no SPC/Serasa e pleiteamos indenização por danos morais decorrentes da negativação.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pessoa Jurídica -->
+    <div class="tab-content" id="tab-pj" role="tabpanel" aria-labelledby="btn-pj">
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <span class="service-icon" aria-hidden="true">⚖️</span>
+          <h3>Defesa em Execução Bancária e Monitória</h3>
+          <p>Defesa técnica em ações de execução e monitória movidas por bancos, contestando valores, juros e penhoras.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <span class="service-icon" aria-hidden="true">🤝</span>
+          <h3>Renegociação de Dívidas Empresariais</h3>
+          <p>Mediamos acordos vantajosos com instituições financeiras, reduzindo o passivo bancário da sua empresa.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <span class="service-icon" aria-hidden="true">🔒</span>
+          <h3>Derrubada de Garantias Abusivas</h3>
+          <p>Contestamos aval, alienação fiduciária e hipotecas constituídos em condições abusivas ou com vício de consentimento.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <span class="service-icon" aria-hidden="true">🏢</span>
+          <h3>Bloqueio Judicial de Conta Empresarial</h3>
+          <p>Revertemos bloqueios judiciais que paralisam operações da empresa, restaurando o fluxo financeiro com urgência.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <span class="service-icon" aria-hidden="true">💹</span>
+          <h3>Recuperação de Crédito e Saldo Negativo</h3>
+          <p>Auditamos contratos bancários para identificar cobranças indevidas e recuperar valores pagos em excesso.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <span class="service-icon" aria-hidden="true">🛡️</span>
+          <h3>Blindagem Patrimonial Preventiva</h3>
+          <p>Estruturamos sua empresa para proteger o patrimônio pessoal dos sócios contra riscos bancários e execuções futuras.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 5 — PROCESSO
+     ============================================================ -->
+<section id="processo" aria-label="Como funciona nosso atendimento">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center;">
+      <p class="section-eyebrow">Como Funciona</p>
+      <h2 class="section-title">Processo de Atendimento</h2>
+      <p class="section-sub" style="margin:0 auto;">Do primeiro contato à resolução do seu caso, em cinco etapas simples</p>
+    </div>
+
+    <div class="process-timeline" role="list">
+
+      <div class="process-step reveal" role="listitem">
+        <div class="step-bubble">
+          <span class="step-num">01</span>
+          <span class="step-icon" aria-hidden="true">📞</span>
+        </div>
+        <div>
+          <h3>Consulta Gratuita</h3>
+          <p>Conte sua situação pelo WhatsApp. Sem jargões, sem compromisso.</p>
+        </div>
+      </div>
+
+      <div class="process-step reveal reveal-delay-1" role="listitem">
+        <div class="step-bubble">
+          <span class="step-num">02</span>
+          <span class="step-icon" aria-hidden="true">📋</span>
+        </div>
+        <div>
+          <h3>Análise do Caso</h3>
+          <p>Avaliamos a viabilidade jurídica com base nos fatos e documentos.</p>
+        </div>
+      </div>
+
+      <div class="process-step reveal reveal-delay-2" role="listitem">
+        <div class="step-bubble">
+          <span class="step-num">03</span>
+          <span class="step-icon" aria-hidden="true">⚖️</span>
+        </div>
+        <div>
+          <h3>Estratégia Definida</h3>
+          <p>Apresentamos o plano de ação mais eficiente para o seu caso.</p>
+        </div>
+      </div>
+
+      <div class="process-step reveal reveal-delay-3" role="listitem">
+        <div class="step-bubble">
+          <span class="step-num">04</span>
+          <span class="step-icon" aria-hidden="true">🏛️</span>
+        </div>
+        <div>
+          <h3>Atuação Processual</h3>
+          <p>Ingressamos com as medidas judiciais ou extrajudiciais cabíveis.</p>
+        </div>
+      </div>
+
+      <div class="process-step reveal reveal-delay-4" role="listitem">
+        <div class="step-bubble">
+          <span class="step-num">05</span>
+          <span class="step-icon" aria-hidden="true">✅</span>
+        </div>
+        <div>
+          <h3>Resultado</h3>
+          <p>Você é atualizado em cada etapa até a resolução do seu caso.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 6 — SOBRE
+     ============================================================ -->
+<section id="sobre" aria-label="Sobre o escritório">
+  <div class="container">
+    <div class="sobre-grid">
+
+      <div class="sobre-content reveal">
+        <p class="section-eyebrow">Quem Somos</p>
+        <h2 class="section-title">Experiência especializada.<br>Comprometimento real.</h2>
+        <p style="color:var(--text-muted);font-size:16px;line-height:1.75;margin-top:16px;">
+          O Breda &amp; Bittencourt Advogados nasceu da convicção de que o cidadão endividado ou vítima de abusos bancários merece representação jurídica de alto nível. Atuamos exclusivamente no Direito Bancário, o que nos permite oferecer profundidade técnica e estratégia cirúrgica em cada caso.
+        </p>
+
+        <div class="sobre-features">
+          <div class="feature-item">
+            <div class="feature-check" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            Registro ativo na OAB
+          </div>
+          <div class="feature-item">
+            <div class="feature-check" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            Atendimento digital em todo o Brasil
+          </div>
+          <div class="feature-item">
+            <div class="feature-check" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            Especialização exclusiva em Direito Bancário
+          </div>
+          <div class="feature-item">
+            <div class="feature-check" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            Equipe dedicada e transparente com o cliente
+          </div>
+        </div>
+
+        <div class="sobre-cta">
+          <a href="https://wa.me/5521967617560" target="_blank" rel="noopener" class="btn btn-gold">
+            Falar com Nossa Equipe →
+          </a>
+        </div>
+      </div>
+
+      <div class="sobre-visual reveal reveal-delay-2">
+        <div class="photo-placeholder" aria-label="Foto dos sócios do escritório">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="22" cy="20" r="12" stroke="#C9A84C" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="42" cy="20" r="12" stroke="#C9A84C" stroke-width="1.5" opacity="0.5"/>
+            <path d="M4 56c0-10 8-18 18-18h20c10 0 18 8 18 18" stroke="#C9A84C" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+          </svg>
+          <p>[Foto dos Sócios]</p>
+        </div>
+        <div class="sobre-accent-box" aria-hidden="true">
+          <div class="accent-num">10+</div>
+          <div class="accent-label">Anos de atuação<br>em Direito Bancário</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 7 — NÚMEROS
+     ============================================================ -->
+<section id="numeros" aria-label="Números do escritório">
+  <div class="container">
+    <div class="stats-grid">
+
+      <div class="stat-item reveal">
+        <span class="stat-num" data-target="1200" data-suffix="+">0</span>
+        <span class="stat-label">Casos atendidos</span>
+      </div>
+
+      <div class="stat-item reveal reveal-delay-1">
+        <span class="stat-num" data-target="8" data-prefix="R$ " data-suffix="M+">0</span>
+        <span class="stat-label">Recuperado para clientes</span>
+      </div>
+
+      <div class="stat-item reveal reveal-delay-2">
+        <span class="stat-num" data-target="98" data-suffix="%">0</span>
+        <span class="stat-label">Satisfação dos clientes</span>
+      </div>
+
+      <div class="stat-item reveal reveal-delay-3">
+        <span class="stat-num" data-target="5" data-suffix=" estrelas">0</span>
+        <span class="stat-label">Avaliação no Google</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 8 — DEPOIMENTOS
+     ============================================================ -->
+<section id="depoimentos" aria-label="Depoimentos de clientes">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center;">
+      <p class="section-eyebrow">Depoimentos</p>
+      <h2 class="section-title">O que nossos clientes dizem</h2>
+    </div>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card reveal">
+        <div class="stars" aria-label="5 estrelas">
+          <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+        </div>
+        <p class="testimonial-text">"Estava prestes a perder meu carro. Em dois dias o escritório conseguiu suspender a busca e apreensão. Profissionalismo exemplar. Foram honestos desde o início e me mantiveram informado em cada etapa."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" aria-hidden="true">M</div>
+          <div>
+            <div class="author-name">M.S.</div>
+            <div class="author-role">Cliente Pessoa Física</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="stars" aria-label="5 estrelas">
+          <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+        </div>
+        <p class="testimonial-text">"Juros absurdos no meu consignado. Eles conseguiram uma revisão que economizou mais de R$ 12.000 pra mim. Nunca pensei que isso fosse possível. Recomendo de olhos fechados."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" aria-hidden="true">R</div>
+          <div>
+            <div class="author-name">R.O.</div>
+            <div class="author-role">Servidor Público</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="stars" aria-label="5 estrelas">
+          <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+        </div>
+        <p class="testimonial-text">"Nossa empresa estava sofrendo execução bancária e o caixa estava bloqueado. A equipe foi rápida, técnica e transparente em cada etapa. Conseguimos reverter a situação em semanas."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" aria-hidden="true">C</div>
+          <div>
+            <div class="author-name">C.L.</div>
+            <div class="author-role">Empresário</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 9 — FAQ
+     ============================================================ -->
+<section id="faq" aria-label="Perguntas frequentes">
+  <div class="container">
+    <div class="faq-inner">
+      <div class="section-header reveal" style="text-align:center;">
+        <p class="section-eyebrow">Dúvidas Comuns</p>
+        <h2 class="section-title">Perguntas Frequentes</h2>
+      </div>
+
+      <div class="faq-list reveal">
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            O banco pode penhorar meu salário por dívida?
+            <span class="faq-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Em regra, não. O salário é considerado verba alimentar e, portanto, impenhorável conforme o Código de Processo Civil. Há exceções muito restritas, como pensão alimentícia. Se seu salário foi bloqueado indevidamente, é possível requerer desbloqueio imediato por meio de medida judicial urgente. Entre em contato conosco para avaliar seu caso.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Meu carro foi apreendido. Tenho prazo para agir?
+            <span class="faq-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Sim. Após a busca e apreensão, o devedor tem 5 dias úteis para pagar o débito vencido ou apresentar contestação. Após esse prazo, o credor pode pedir a consolidação da propriedade do veículo. Por isso, é fundamental agir de imediato. Em muitos casos é possível suspender a liminar de apreensão, contestar os valores cobrados e reverter a situação na Justiça.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            O que é revisional de contrato bancário?
+            <span class="faq-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              É uma ação judicial que busca a revisão de cláusulas abusivas em contratos de financiamento, empréstimo ou crédito. Pode resultar na redução de juros acima da média do mercado, eliminação de encargos ilegais (como capitalização de juros não autorizada), restituição de valores cobrados indevidamente e redução do saldo devedor. Qualquer contrato bancário pode ser auditado.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Vocês atendem em todo o Brasil?
+            <span class="faq-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Sim. Atuamos em todo o território nacional de forma 100% digital. O atendimento acontece por WhatsApp, videoconferência e e-mail, com gestão eletrônica de documentos. Independentemente de onde você esteja no Brasil, podemos representá-lo judicialmente por meio de correspondentes e atuação direta em tribunais de todo o país.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Quais documentos preciso para a consulta gratuita?
+            <span class="faq-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Para a consulta inicial, nenhum documento é obrigatório — basta nos contar a sua situação. Se disponível, ter em mãos o contrato bancário, extratos recentes, boletos, notificações ou a liminar de busca e apreensão recebida facilita a análise. Mas não deixe de entrar em contato por falta de documentação: avaliamos cada caso individualmente e orientamos sobre o que reunir.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            O consignado pode ser cancelado se os juros forem abusivos?
+            <span class="faq-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Sim. Quando os juros excedem patamares abusivos, a margem consignável foi violada, ou o contrato foi obtido mediante fraude ou indução em erro, é possível buscar a revisão judicial ou o cancelamento do contrato. Também há casos em que o servidor nem reconhece o contrato — situação de fraude que demanda ação urgente para suspensão imediata dos descontos e responsabilização do banco.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 10 — CTA BANNER
+     ============================================================ -->
+<section id="cta-banner" aria-label="Chamada para ação">
+  <div class="container">
+    <div class="cta-banner-inner reveal">
+      <h2>Não perca o prazo.<br>A defesa começa com uma conversa.</h2>
+      <p>Atendimento gratuito e sem compromisso. Fale agora com um advogado especialista.</p>
+      <a href="https://wa.me/5521967617560" target="_blank" rel="noopener" class="btn btn-wa" aria-label="Iniciar consulta gratuita no WhatsApp">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Iniciar Consulta Gratuita no WhatsApp →
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 11 — FOOTER
+     ============================================================ -->
+<footer id="footer" aria-label="Rodapé">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="footer-logo" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 26 26" fill="none"><path d="M13 2L4 8v2h18V8L13 2Z" fill="#C9A84C" opacity="0.9"/><rect x="5.5" y="10" width="2" height="10" rx="1" fill="#C9A84C" opacity="0.7"/><rect x="11.5" y="10" width="2" height="10" rx="1" fill="#C9A84C" opacity="0.7"/><rect x="17.5" y="10" width="2" height="10" rx="1" fill="#C9A84C" opacity="0.7"/><rect x="3" y="20" width="20" height="2" rx="1" fill="#C9A84C"/></svg>
+          Breda &amp; <span>Bittencourt</span>
+        </div>
+        <p class="footer-tagline">"Seu patrimônio tem defesa. Conheça quem luta por ele."</p>
+        <div class="social-links">
+          <a href="https://instagram.com/bredaebittencourtadv" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.5M12 17v-4a2 2 0 014 0v4M12 10v7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4>Links Rápidos</h4>
+        <ul>
+          <li><a href="#hero">Início</a></li>
+          <li><a href="#solucoes">Soluções</a></li>
+          <li><a href="#sobre">Quem Somos</a></li>
+          <li><a href="#processo">Processo</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Practice Areas -->
+      <div class="footer-col">
+        <h4>Áreas de Atuação</h4>
+        <ul>
+          <li><a href="#solucoes">Busca e Apreensão</a></li>
+          <li><a href="#solucoes">Revisional de Contrato</a></li>
+          <li><a href="#solucoes">Consignado Abusivo</a></li>
+          <li><a href="#solucoes">Fraude Bancária</a></li>
+          <li><a href="#solucoes">Execução Bancária</a></li>
+          <li><a href="#solucoes">Blindagem Patrimonial</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <div class="contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.453 3.49 11.815 11.815 0 0012.05 0z"/></svg>
+          <a href="https://wa.me/5521967617560" target="_blank" rel="noopener">+55 (21) 96761-7560</a>
+        </div>
+        <div class="contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:contato@bredabittencourt.adv.br">contato@bredabittencourt.adv.br</a>
+        </div>
+        <div class="contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          <span>Atendimento digital em todo o Brasil</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(255,255,255,0.06);">
+    <div class="container">
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Breda &amp; Bittencourt Advogados. Todos os direitos reservados. OAB [XX/XXXXX]</p>
+        <p class="footer-disclaimer">As informações contidas neste site têm caráter meramente informativo e não constituem consulta jurídica, não estabelecendo relação advogado-cliente.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     FLOATING WHATSAPP BUTTON
+     ============================================================ -->
+<div id="wa-float" role="complementary" aria-label="Botão de contato via WhatsApp">
+  <span class="wa-tooltip">Fale conosco agora</span>
+  <a href="https://wa.me/5521967617560" target="_blank" rel="noopener" class="wa-btn" aria-label="Contato via WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+</div>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* === NAVBAR SCROLL STATE === */
+  const navbar = document.getElementById('navbar');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    navbar.classList.toggle('scrolled', y > 20);
+    lastScroll = y;
+  }, { passive: true });
+
+  /* === HAMBURGER MENU === */
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('nav-drawer');
+  let drawerOpen = false;
+
+  function toggleDrawer(open) {
+    drawerOpen = open;
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    drawer.classList.toggle('open', open);
+    drawer.setAttribute('aria-hidden', String(!open));
+  }
+
+  hamburger.addEventListener('click', () => toggleDrawer(!drawerOpen));
+
+  drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => toggleDrawer(false));
+  });
+
+  document.addEventListener('click', e => {
+    if (drawerOpen && !drawer.contains(e.target) && !hamburger.contains(e.target)) {
+      toggleDrawer(false);
+    }
+  });
+
+  /* === TAB SWITCHING === */
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      tabBtns.forEach(b => {
+        b.classList.toggle('active', b === btn);
+        b.setAttribute('aria-selected', String(b === btn));
+      });
+      tabContents.forEach(c => {
+        c.classList.toggle('active', c.id === 'tab-' + target);
+      });
+    });
+  });
+
+  /* === FAQ ACCORDION === */
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.faq-item.open').forEach(open => {
+        open.classList.remove('open');
+        open.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* === SCROLL REVEAL === */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* === COUNTER ANIMATION === */
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    let start = null;
+
+    function easeOutExpo(t) {
+      return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+    }
+
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const value = Math.floor(easeOutExpo(progress) * target);
+      el.textContent = prefix + value.toLocaleString('pt-BR') + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.stat-num[data-target]').forEach(el => counterObserver.observe(el));
+
+})();
+</script>
+
+</body>
+</html>
